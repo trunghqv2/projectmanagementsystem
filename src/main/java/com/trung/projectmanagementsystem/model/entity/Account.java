@@ -1,6 +1,7 @@
 package com.trung.projectmanagementsystem.model.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;

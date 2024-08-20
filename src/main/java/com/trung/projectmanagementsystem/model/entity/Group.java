@@ -34,7 +34,7 @@ public class Group implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name = "`name`", nullable = false, length = 100, unique = true)
+	@Column(name = "name", nullable = false, length = 100, unique = true)
 	private String name;
 
 	@Column(name = "member_size", nullable = false)
@@ -49,14 +49,14 @@ public class Group implements Serializable {
 	@CreationTimestamp
 	private Date createdDateTime;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "modifier_id", referencedColumnName = "id")
-	private Account modifier;
-
 	@Column(name = "updated_date_time")
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
-	private Date updatedDateTime;
+	private Date updateDateTime;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "modifier_id", referencedColumnName = "id")
+	private Account modifier;
 
 	@OneToMany(mappedBy = "group")
 	private List<GroupAccount> groupAccounts;

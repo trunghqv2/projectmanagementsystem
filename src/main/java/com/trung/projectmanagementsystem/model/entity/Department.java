@@ -26,7 +26,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "`Department`")
 public class Department implements Serializable {
-
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "id")
@@ -34,35 +33,35 @@ public class Department implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column(name = "`name`", nullable = false, unique = true, length = 100)
+	@Column(name = "name", nullable = false, unique = true, length = 100)
 	private String name;
 
 	@Column(name = "member_size", nullable = false)
-	private Integer memberSize;
+	private String memberSize;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "manager_id")
+	@JoinColumn(name="manager_id")
 	private Account manager;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "creator_id", referencedColumnName = "id")
+	@JoinColumn(name="creator_id",referencedColumnName="id")
 	private Account creator;
 
-	@Column(name = "created_date_time")
-	@Temporal(TemporalType.TIMESTAMP)
-	@CreationTimestamp
-	private Date createdDateTime;
-
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "modifier_id", referencedColumnName = "id")
-	private Account modifier;
+	@JoinColumn(name="modifier_id",referencedColumnName="id")
+	private Account moidifier;
 
-	@Column(name = "updated_date_time")
+	@Column(name="created_date_time")
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
-	private Date updatedDateTime;
+	private Date createdDayTime;
 
-	@OneToMany(mappedBy = "department")
-	private List<Account> accounts;
+	@Column(name="updated_date_time")
+	@Temporal(TemporalType.TIMESTAMP)
+	@CreationTimestamp
+	private Date updatedDayTime;
+
+	@OneToMany(mappedBy="department")
+	private List<Account>accounts;
 
 }

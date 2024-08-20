@@ -31,12 +31,12 @@ public class GroupAccount implements Serializable {
 
 	@ManyToOne
 	@MapsId("group_id")
-	@JoinColumn(name = "group_id")
+	@JoinColumn(name="group_id")
 	private Group group;
 
 	@ManyToOne
 	@MapsId("account_id")
-	@JoinColumn(name = "account_id")
+	@JoinColumn(name="account_id")
 	private Account account;
 
 	@Column(name = "join_date_time")
@@ -47,14 +47,12 @@ public class GroupAccount implements Serializable {
 	@Data
 	@NoArgsConstructor
 	@Embeddable
-	public static class GroupAccountKey implements Serializable {
-
-		private static final long serialVersionUID = 1L;
-
-		@Column(name = "group_id", nullable = false)
+	public static class GroupAccountKey implements Serializable{
+		private static final long serialVersionUID = 1L ;
+		@Column(name="group_id",nullable = false)
 		private Integer groupId;
 
-		@Column(name = "account_id", nullable = false)
+		@Column(name = "account_id",nullable=false)
 		private Integer accountId;
 	}
 }
