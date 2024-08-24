@@ -6,7 +6,7 @@ import io.micrometer.common.util.StringUtils;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-public class AccountUserNameExistsValidator implements ConstraintValidator<Annotation, Object> {
+public class AccountUserNameExistsValidator implements ConstraintValidator<AccountUserNameExists, String> {
     @Autowired
     Private AccountService service;
 
