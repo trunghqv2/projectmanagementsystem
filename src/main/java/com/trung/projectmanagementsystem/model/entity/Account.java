@@ -103,6 +103,10 @@ public class Account implements Serializable {
 		}
 	}
 
+    public Object getRole() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
 	public enum Status {
 		BLOCK, ACTIVE;
 	}
