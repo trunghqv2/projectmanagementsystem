@@ -8,12 +8,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.trung.projectmanagementsystem.model.entity.Account;
-import com.trung.projectmanagementsystem.reponository.IAccountReponsitory;
+import com.trung.projectmanagementsystem.reponository.IAccountRepository;
 
 public class AccountServiceImpl extends BaseService implements AccountService {
 
     @Autowired
-    private IAccountReponsitory accountReponsitory;
+    private IAccountRepository accountRepository;
 
     @Autowired
     private SecurityUtils SecurityUtils;
@@ -23,7 +23,7 @@ public class AccountServiceImpl extends BaseService implements AccountService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Account account = accountReponsitory.findByUsername(username);
+        Account account = accountRepository.findByUsername(username);
         if (account == null) {
             throw new UsernameNotFoundException(username);
         }
@@ -39,7 +39,7 @@ public class AccountServiceImpl extends BaseService implements AccountService {
     }
 
     @Override
-    public boolean inAccountExistsByUsername(String username) {
+    public boolean isAccountExistsByUsername(String username) {
         return accountRepository.existsByUsername(username);
     }
 
@@ -53,6 +53,5 @@ public class AccountServiceImpl extends BaseService implements AccountService {
         return passwordEncoder.matches(
 				oldPassword, 
 				securityUtils.getCurrentAccountLogin().getPassword());
-    }
-
+    } 
 }

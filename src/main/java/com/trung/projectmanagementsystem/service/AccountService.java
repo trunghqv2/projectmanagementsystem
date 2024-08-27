@@ -7,7 +7,7 @@ import com.trung.projectmanagementsystem.model.entity.Account;
 public interface  AccountService extends UserDetailsService {
         Account getAccountByUsername(String username);
 
-        boolean inAccountExistsByUsername(String username);
+        boolean isAccountExistsByUsername(String username);
 
         boolean isAccountExistsByEmail(String email);
 

@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.trung.projectmanagementsystem.model.entity.Account;
 
-public interface IAccountReponsitory extends JpaRepository<Account, Integer> {
+public interface IAccountRepository extends JpaRepository<Account, Integer> {
 
     boolean existsByEmail(String email);
 

@@ -2,6 +2,9 @@ package com.trung.projectmanagementsystem.model.form.account;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.trung.projectmanagementsystem.model.validation.account.AccountEmailNotExists;
+import com.trung.projectmanagementsystem.model.validation.account.AccountUsernameNotExists;
+
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

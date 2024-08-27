@@ -8,25 +8,33 @@ import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.ElementType.TYPE_USE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+import java.lang.annotation.Documented;
+import java.lang.annotation.Repeatable;
+import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-@Target({ METHOD, FIELD, ANOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
+import com.trung.projectmanagementsystem.model.validation.account.AccountUsernameNotExists.List;
+
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
+
+
+@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 @Retention(RUNTIME)
 @Documented
-@Constraint(validatedBy = { AccountUsernameNotExists.class })
-@Repeatable(list.class)
+@Constraint(validatedBy = { AccountUsernameNotExistsValidator.class })
+@Repeatable(List.class)
 public @interface AccountUsernameNotExists {
-    String message() default "Username exists already !"
+	String message() default "Username exists already!";
 
-    Class<?> groups()default {};
+	Class<?>[] groups() default {};
 
-class<?extends Payload>[]payload()default{};
+	Class<? extends Payload>[] payload() default {};
 
-@Target({METHOD,FIELD,ANOTATION_TYPE,CONSTRUCTOR,PARAMETER,TYPE_USE})
-@Retention(RUNTIME)
-@Documented
-@interface list{
-    AccountUsernameNotExists[] value();
-}
-
+	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
+	@Retention(RUNTIME)
+	@Documented
+	@interface List {
+		AccountUsernameNotExists[] value();
+	}
 }
