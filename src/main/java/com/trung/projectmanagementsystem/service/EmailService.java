@@ -7,7 +7,7 @@ public interface EmailService {
     
     void sendActiveAccountRegistrationEmail(Account account , String registrationToken);
 
-    void sendForgotPasswordEmail(Account account ,String key);
+    void sendForgotPasswordEmail(Account account ,String forgotPasswordToken);
 
     void sendChangePasswordEmail(Account account);
 

@@ -30,6 +30,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "`Account`")
 public class Account implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Column(name = "id")
@@ -49,31 +50,31 @@ public class Account implements Serializable {
 	@Column(name = "email", nullable = false, unique = true, length = 50)
 	private String email;
 
-	@Column(name = "username", nullable = false,unique = true , updatable = false, length = 20)
+	@Column(name = "username", nullable = false, unique = true, updatable = false, length = 20)
 	private String username;
 
-	@Column(name = "password", nullable = false, length = 800)
+	@Column(name = "`password`", nullable = false, length = 800)
 	private String password;
 
-	@Column(name = "status", nullable = false)
+	@Column(name = "`status`", nullable = false)
 	@Enumerated(EnumType.ORDINAL)
 	private Status status;
 
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name= "department_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "department_id")
 	private Department department;
 
-	@Column(name="`role`" , nullable=false)
+	@Column(name = "`role`", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Role role;
-
-	@Column(name= "last_change_password_date_time")
+	
+	@Column(name = "last_change_password_date_time")
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
 	private Date lastChangePasswordDateTime;
-
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name= "creator_id" , referencedColumnName = "id" )
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "creator_id", referencedColumnName = "id")
 	private Account creator;
 
 	@Column(name = "created_date_time")
@@ -81,17 +82,17 @@ public class Account implements Serializable {
 	@CreationTimestamp
 	private Date createdDateTime;
 
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name= "modifier_id" , referencedColumnName = "id" )
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "modifier_id", referencedColumnName = "id")
 	private Account modifier;
 
-	@Column(name="update_date-time")
+	@Column(name = "updated_date_time")
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
-	private Date updateDateTime;
+	private Date updatedDateTime;
 
-	@OneToMany(mappedBy="account")
-	private List<GroupAccount> groupAccount;
+	@OneToMany(mappedBy = "account")
+	private List<GroupAccount> groupAccounts;
 
 	@PrePersist
 	public void setDefault() {
@@ -102,10 +103,6 @@ public class Account implements Serializable {
 			role = Role.EMPLOYEE;
 		}
 	}
-
-    public Object getRole() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 
 	public enum Status {
 		BLOCK, ACTIVE;

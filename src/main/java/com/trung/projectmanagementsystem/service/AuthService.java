@@ -9,15 +9,15 @@ import com.trung.projectmanagementsystem.model.form.auth.ResetPasswordForm;
 public interface AuthService {
     LoginInfoDTO login(String username) throws AccountBlockException;
 
-    void createAccountRegistrationTokenViaEmail(String usename);
+	void createAccount(CreatingAccountForm form);
 
-    void createAccount(CreatingAccountForm form);
+	void sendAccountRegistrationTokenViaEmail(String username);
 
-    void acticeAccount(String registrationToken);
+	void activeAccount(String registrationToken);
 
-    void sendAccountForgotPasswordTokenViaEmail(String usernameOrEmail);
+	void sendAccountForgotPasswordTokenViaEmail(String usernameOrEmail);
 
-    void resetPassword(ResetPasswordForm form);
+	void resetPassword(ResetPasswordForm form);
 
-    void changePassword(ChangePasswordForm form);
+	void changePassword(ChangePasswordForm form);
 }

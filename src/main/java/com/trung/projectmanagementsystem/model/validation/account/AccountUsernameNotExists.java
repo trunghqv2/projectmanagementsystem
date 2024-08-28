@@ -18,7 +18,6 @@ import com.trung.projectmanagementsystem.model.validation.account.AccountUsernam
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
-
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 @Retention(RUNTIME)
 @Documented

@@ -1,22 +1,26 @@
 package com.trung.projectmanagementsystem.model.validation.account;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 
-import io.micrometer.common.util.StringUtils;
+import com.trung.projectmanagementsystem.service.AccountServiceImpl;
+
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-public class AccountUserNameExistsValidator implements ConstraintValidator<AccountUserNameExists, String> {
-    @Autowired
-    Private AccountService service;
+public class AccountUsernameExistsValidator implements ConstraintValidator<AccountUsernameExists, String> {
 
-    @SuppressWarnings("deprecation")
-    @Override
-    public boolean isValid(Object username, ConstraintValidatorContext context) {
-        if(StringUtils.isEmpty(username)){
-            return true;
-        }
-        return service.isAccountExistsByUserName(username);
-    }
+	@Autowired
+	private AccountServiceImpl service;
 
+	@SuppressWarnings("deprecation")
+	@Override
+	public boolean isValid(String username, ConstraintValidatorContext context) {
+
+		if (StringUtils.isEmpty(username)) {
+			return true;
+		}
+
+		return service.isAccountExistsByUsername(username);
+	}
 }

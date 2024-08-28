@@ -2,6 +2,8 @@ package com.trung.projectmanagementsystem.model.form.auth;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.trung.projectmanagementsystem.model.validation.auth.ForgotPasswordTokenValid;
+
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ResetPasswordForm {
     
-    @foregotPasswordTokenValid
+    @ForgotPasswordTokenValid
     @NotBlank
     private String forgotPasswordToken;
 

@@ -2,6 +2,8 @@ package com.trung.projectmanagementsystem.model.form.auth;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.trung.projectmanagementsystem.model.validation.auth.OldPasswordCorrect;
+
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;

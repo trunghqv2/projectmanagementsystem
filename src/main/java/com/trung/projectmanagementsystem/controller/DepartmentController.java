@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.trung.projectmanagementsystem.model.dto.department.DepartmentDTO;
 import com.trung.projectmanagementsystem.model.form.department.DepartmentFilterForm;
+import com.trung.projectmanagementsystem.service.DepartmentService;
 
 import jakarta.validation.Valid;
-import lombok.extern.log4j.Log4j;
 
 @RestController
 @RequestMapping(value = "appi/v1/departments")
 @Validated
-@Log4j
 public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;

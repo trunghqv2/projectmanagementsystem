@@ -13,24 +13,27 @@ import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
-import jakarta.validation.Constraint;
+import com.trung.projectmanagementsystem.model.validation.account.AccountEmailNotExists.List;
 
-@Target({ METHOD, FIELD, ANOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
+import jakarta.validation.Constraint;
+import jakarta.validation.Payload;
+
+@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
 @Retention(RUNTIME)
 @Documented
-@Constraint(validatedBy = { AccountEmailNotExistValidator.class })
-@Repeatable(list.class)
+@Constraint(validatedBy = { AccountEmailNotExistsValidator.class })
+@Repeatable(List.class)
 public @interface AccountEmailNotExists {
-    String message() default "Email exists already";
+	String message() default "Email exists already!";
 
-    Class<?>[] groups() default {};
+	Class<?>[] groups() default {};
 
-    Class<? extends Payload>[] payload() default {};
+	Class<? extends Payload>[] payload() default {};
 
-    @Target({ METHOD, FIELD, ANOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
-    @Retention(RUNTIME)
-    @Documented
-    @interface list {
-        AccountEmailNotExists[] value();
-    }
+	@Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER, TYPE_USE })
+	@Retention(RUNTIME)
+	@Documented
+	@interface List {
+		AccountEmailNotExists[] value();
+	}
 }

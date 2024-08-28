@@ -10,16 +10,17 @@ import jakarta.validation.ConstraintValidatorContext;
 
 public class AccountUsernameNotExistsValidator implements ConstraintValidator<AccountUsernameNotExists, String> {
 
-    @Autowired
-    private AccountService service;
+	@Autowired
+	private AccountService service;
 
-    @SuppressWarnings("Deprecation")
-    @Override
-    public boolean isValid(String username, ConstraintValidatorContext context) {
-        if (StringUtils.isEmpty(username)) {
-            return true;
-        }
-        return !service.isAccountExistsByUsername(username);
-    }
+	@SuppressWarnings("deprecation")
+	@Override
+	public boolean isValid(String username, ConstraintValidatorContext context) {
 
+		if (StringUtils.isEmpty(username)) {
+			return true;
+		}
+
+		return !service.isAccountExistsByUsername(username);
+	}
 }
